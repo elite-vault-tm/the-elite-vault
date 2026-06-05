@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Elite Vault™ | AI Tools, Trainings & Brand Strategy for Creators</title>
+  <meta name="description" content="The Elite Vault™ is where intentional creators get Elevated, Linked, Intentional, Tested, and Executed. Real tools. Real trainings. Real results." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black: #0a0a0f;
+      --gold: #C9A84C;
+      --gold-light: #e2c47a;
+      --gold-dark: #a07a2a;
+      --crimson: #C2185B;
+      --crimson-dark: #8B0000;
+      --white: #ffffff;
+      --off-white: #f5f0e8;
+      --gray: #888;
+      --border: rgba(201, 168, 76, 0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: var(--gold);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker-track span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      padding: 0 2.5rem;
+    }
+    .ticker-track span::after {
+      content: '✦';
+      margin-left: 2.5rem;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); font-weight: 400; }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(194,24,91,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s forwards;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.6s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.8s forwards;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { background: var(--gold); color: var(--black); }
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 3.5rem auto 0;
+      opacity: 0;
+      animation: fadeUp 0.7s 1s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    /* ── PROBLEM ── */
+    .problem { background: #0f0f14; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .problem-list { list-style: none; }
+    .problem-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+    .problem-list li:last-child { border-bottom: none; }
+    .problem-list li .icon {
+      color: var(--crimson);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .problem-callout {
+      background: linear-gradient(135deg, rgba(194,24,91,0.08) 0%, rgba(201,168,76,0.06) 100%);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+    .problem-callout blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--white);
+    }
+    .problem-callout blockquote span { color: var(--gold); }
+
+    /* ── SOLUTION ── */
+    .solution { position: relative; overflow: hidden; }
+    .solution::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -200px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .solution-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+    .elite-framework { margin-top: 0; }
+    .elite-framework .framework-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .elite-framework .framework-item:last-child { border-bottom: none; }
+    .framework-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 30px;
+    }
+    .framework-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .framework-text p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* ── VAULT CONTENTS ── */
+    .vault { background: #0f0f14; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .vault-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .vault-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 2rem 1.6rem;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .vault-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .vault-card:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.04); }
+    .vault-card:hover::before { transform: scaleX(1); }
+    .vault-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .vault-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--white);
+    }
+    .vault-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ── WHO IT'S FOR ── */
+    .for-section { position: relative; }
+    .for-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .for-card {
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .for-card .check {
+      color: var(--gold);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .for-card p {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+    .for-card p strong { color: var(--white); font-weight: 600; }
+    .not-for {
+      margin-top: 3rem;
+      padding: 1.8rem;
+      border: 1px solid rgba(194,24,91,0.3);
+      background: rgba(194,24,91,0.04);
+    }
+    .not-for p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+    .not-for p strong { color: var(--crimson); }
+
+    /* ── CTA / LEAD CAPTURE ── */
+    .cta-section {
+      background: linear-gradient(135deg, #0f0f14 0%, #0a0a0f 100%);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section .section-title { max-width: 700px; margin: 0 auto 1rem; }
+    .cta-section .section-body { margin: 0 auto 2.5rem; text-align: center; max-width: 500px; }
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .lead-form input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      padding: 1rem 1.2rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .lead-form input:focus { border-color: var(--gold); }
+    .lead-form select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      padding: 1rem 1.2rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .lead-form select:focus { border-color: var(--gold); }
+    .lead-form select option { background: #1a1a22; color: var(--white); }
+    .lead-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .lead-form button {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lead-form button:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .form-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .form-success {
+      display: none;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--gold);
+      padding: 1.5rem;
+      text-align: center;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .form-success p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .footer-tagline {
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-legal {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── DIVIDER ── */
+    .gold-rule {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+    }
+    .gold-rule.centered { margin: 1.5rem auto; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 4rem 1.5rem; }
+      .problem-grid,
+      .solution-intro,
+      .for-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .vault-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-logo { font-size: 0.95rem; }
+    }
+    @media (max-width: 480px) {
+      .vault-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span>The Elite Vault™</span>
+      <span>AI Tools for Creators</span>
+      <span>Brand Building on Purpose</span>
+      <span>Content Strategy That Works</span>
+      <span>App Building for Non-Techies</span>
+      <span>Real Strategies. Real Results.</span>
+      <span>E.L.I.T.E. Framework™</span>
+      <span>Elevated. Linked. Intentional. Tested. Executed.</span>
+      <span>The Elite Vault™</span>
+      <span>AI Tools for Creators</span>
+      <span>Brand Building on Purpose</span>
+      <span>Content Strategy That Works</span>
+      <span>App Building for Non-Techies</span>
+      <span>Real Strategies. Real Results.</span>
+      <span>E.L.I.T.E. Framework™</span>
+      <span>Elevated. Linked. Intentional. Tested. Executed.</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">The Elite Vault™ <span>| AI + Brand Strategy</span></a>
+    <a href="https://www.facebook.com/EliteVaultSNJ" target="_blank" rel="noopener noreferrer" class="nav-cta">Join the Community</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <p class="hero-eyebrow">Welcome to The Elite Vault™</p>
+    <h1>What would change if you had the tools, strategies, and support to <em>create better content?</em></h1>
+    <p class="hero-sub">I'm building this community for creators, entrepreneurs, and business owners who want to use AI with confidence, create content with purpose, and show up more strategically online.</p>
+    <p class="hero-sub" style="margin-top:-1rem;">If you're ready to stop posting and start building — you're in the right place.</p>
+    <div class="hero-actions">
+      <a href="https://www.facebook.com/EliteVaultSNJ" target="_blank" rel="noopener noreferrer" class="btn-primary">Join the Community →</a>
+      <a href="#get-in" class="btn-secondary">Work With Me</a>
+    </div>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <p class="section-label">The Real Problem</p>
+      <div class="gold-rule"></div>
+      <div class="problem-grid">
+        <div>
+          <h2 class="section-title">You're posting.<br>But nobody's <em>feeling it.</em></h2>
+          <p class="section-body">You've got the ideas. You've got the hustle. But your content isn't landing the way it should. And deep down you know why.</p>
+          <div class="gold-rule" style="margin-top:2rem;"></div>
+          <ul class="problem-list">
+            <li><span class="icon">✗</span> You're creating content without a clear strategy behind it</li>
+            <li><span class="icon">✗</span> Your visuals don't match the brand in your head</li>
+            <li><span class="icon">✗</span> You know AI exists but you don't know how to use it for YOU</li>
+            <li><span class="icon">✗</span> You're consistent, but you're not growing</li>
+            <li><span class="icon">✗</span> Nobody has taught you to build a system — just post more</li>
+          </ul>
+        </div>
+        <div class="problem-callout">
+          <blockquote>"You don't have a content problem. You have a <span>brand clarity</span> problem. And once that's fixed, everything else clicks."</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="solution" id="solution">
+    <div class="container">
+      <p class="section-label">The Solution</p>
+      <div class="gold-rule"></div>
+      <div class="solution-intro">
+        <div>
+          <h2 class="section-title">The E.L.I.T.E.™<br><em>Framework</em></h2>
+          <p class="section-body">This isn't a five-letter acronym thrown on a slide. This is the operating system behind every tool, every training, and every result inside The Elite Vault™.</p>
+          <p class="section-body" style="margin-top:1rem;">Each letter is a stage. Each stage is a strategy. You move through them in order — and when you do, your brand stops looking random and starts looking inevitable.</p>
+        </div>
+        <div class="elite-framework">
+          <div class="framework-item">
+            <span class="framework-letter">E</span>
+            <div class="framework-text">
+              <strong>Elevated</strong>
+              <p>Your brand, your visuals, and your voice rise above the noise. No more blending in.</p>
+            </div>
+          </div>
+          <div class="framework-item">
+            <span class="framework-letter">L</span>
+            <div class="framework-text">
+              <strong>Linked</strong>
+              <p>Every piece of content connects. Your posts, tools, and offers all point somewhere.</p>
+            </div>
+          </div>
+          <div class="framework-item">
+            <span class="framework-letter">I</span>
+            <div class="framework-text">
+              <strong>Intentional</strong>
+              <p>You stop posting for the sake of it and start creating with purpose and direction.</p>
+            </div>
+          </div>
+          <div class="framework-item">
+            <span class="framework-letter">T</span>
+            <div class="framework-text">
+              <strong>Tested</strong>
+              <p>You put your strategy in motion, measure what works, and adjust without guessing.</p>
+            </div>
+          </div>
+          <div class="framework-item">
+            <span class="framework-letter">E</span>
+            <div class="framework-text">
+              <strong>Executed</strong>
+              <p>You stop planning and start doing — consistently, confidently, on brand.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VAULT CONTENTS -->
+  <section class="vault" id="inside">
+    <div class="container">
+      <p class="section-label">What's Inside</p>
+      <div class="gold-rule"></div>
+      <h2 class="section-title">This is <em>the Vault.</em></h2>
+      <p class="section-body">Not a course dump. Not a resource library nobody opens. The Elite Vault™ is a living, growing ecosystem built for creators who are serious about brand, AI, and monetization.</p>
+      <div class="vault-grid" style="margin-top:3rem;">
+        <div class="vault-card">
+          <div class="vault-card-icon">🤖</div>
+          <h3>AI Prompt Tools</h3>
+          <p>Custom generators and prompt studios built for content creators. Real prompts that produce real, on-brand results — not generic AI output.</p>
+        </div>
+        <div class="vault-card">
+          <div class="vault-card-icon">📲</div>
+          <h3>Live Trainings</h3>
+          <p>Hands-on virtual sessions that teach you how to build, not just learn. You leave with something done — not just notes.</p>
+        </div>
+        <div class="vault-card">
+          <div class="vault-card-icon">🏗️</div>
+          <h3>Build-With-Me Sessions</h3>
+          <p>Watch it get built in real time. Landing pages, content systems, automation workflows — step by step, no experience required.</p>
+        </div>
+        <div class="vault-card">
+          <div class="vault-card-icon">📋</div>
+          <h3>Brand Strategy Systems</h3>
+          <p>Frameworks and templates that help you clarify your brand, your message, and your next move — even when you're starting from scratch.</p>
+        </div>
+        <div class="vault-card">
+          <div class="vault-card-icon">💰</div>
+          <h3>Monetization Roadmaps</h3>
+          <p>Practical guidance on turning your content into income. Not theory. Actual paths based on where you are right now.</p>
+        </div>
+        <div class="vault-card">
+          <div class="vault-card-icon">👑</div>
+          <h3>Community Access</h3>
+          <p>A space of creators who are building, not just browsing. Accountability, collaboration, and people who get it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="for-section" id="who">
+    <div class="container">
+      <p class="section-label">Who It's For</p>
+      <div class="gold-rule"></div>
+      <h2 class="section-title">Built for creators who are <em>done playing small.</em></h2>
+      <div class="for-grid">
+        <div class="for-card">
+          <span class="check">✦</span>
+          <p><strong>You're a content creator or entrepreneur</strong> who knows your message matters but can't figure out why it's not landing the way it should.</p>
+        </div>
+        <div class="for-card">
+          <span class="check">✦</span>
+          <p><strong>You're brand-curious but AI-confused.</strong> You keep hearing about AI tools but nobody has shown you how to actually use them for your brand.</p>
+        </div>
+        <div class="for-card">
+          <span class="check">✦</span>
+          <p><strong>You're building something real</strong> — not chasing viral moments. You want a brand foundation that holds up and an audience that actually converts.</p>
+        </div>
+        <div class="for-card">
+          <span class="check">✦</span>
+          <p><strong>You're ready to learn AND implement.</strong> Not just consume. You want tools you use, not content you bookmark and forget.</p>
+        </div>
+      </div>
+      <div class="not-for">
+        <p><strong>This is not for you</strong> if you're looking for shortcuts, overnight results, or someone to do the work for you. The Elite Vault™ is for creators who are ready to build something that lasts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / SERVICE INQUIRY -->
+  <section class="cta-section" id="get-in">
+    <div class="container">
+      <p class="section-label" style="text-align:center;">Let's Work Together</p>
+      <div class="gold-rule centered"></div>
+      <h2 class="section-title">Need something<br><em>specific?</em></h2>
+      <p class="section-body">If you're looking for a one-on-one session, a custom app build, or a strategy consultation — fill out the form below and I'll be in touch with next steps.</p>
+
+      <form
+        class="lead-form"
+        id="vault-form"
+        action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID"
+        method="POST"
+      >
+        <input type="text" name="name" placeholder="Your First Name" required />
+        <input type="email" name="email" placeholder="Your Email Address" required />
+        <select name="service" required>
+          <option value="" disabled selected>What are you looking for?</option>
+          <option value="One-on-One Strategy Session">One-on-One Strategy Session</option>
+          <option value="Custom App Build">Custom App Build</option>
+          <option value="Brand Strategy Consultation">Brand Strategy Consultation</option>
+          <option value="AI Tools Training">AI Tools Training</option>
+          <option value="Content System Setup">Content System Setup</option>
+          <option value="Something Else">Something Else — I'll Explain</option>
+        </select>
+        <input type="hidden" name="_subject" value="New Elite Vault™ Service Inquiry" />
+        <button type="submit">Send My Request →</button>
+        <p class="form-note">No spam. No pressure. I'll follow up personally.</p>
+      </form>
+      <div class="form-success" id="form-success">
+        <p>Got it. I'll be in touch soon. Welcome to The Elite Vault™. ✦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">The Elite Vault™</div>
+    <p class="footer-tagline">Real Strategies. Real Creators. Real Results.</p>
+
+    <p class="footer-legal">
+      The Elite Vault™ · For educational purposes only.<br>
+      © 2025 Sabrina Nichols Johnson, LLC. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    // Formspree AJAX submission
+    const form = document.getElementById('vault-form');
+    const success = document.getElementById('form-success');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.style.display = 'block';
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
